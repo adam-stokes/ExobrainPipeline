@@ -1,8 +1,11 @@
 package ExobrainPipeline;
 
 use Moose 0.92;
-use namespace::autoclean;
 
+use List::Util qw(first);
+use Moose::Autobox 0.09; # ->flatten
+
+use namespace::autoclean;
 
 our $VERSION = '0.01';
 
@@ -12,6 +15,14 @@ has plugins => (
   init_arg => undef,
   default  => sub { [ ] },
 );
+
+sub plugin_named {
+  my ($self, $name) = @_;
+  my $plugin = first { $_->plugin_name eq $name } $self->plugins->flatten;
+
+  return $plugin if $plugin;
+  return;
+}
 
 __PACKAGE__->meta->make_immutable;
 
