@@ -120,6 +120,19 @@ sub ddiff {
 
 __PACKAGE__->meta->make_immutable;
 
+
+# Example Config:
+# 
+# [Basecamp]
+# username   = someone@somewhere.com
+# password   = knock,knock
+# account_id = 12345678
+# person     = 8675309 ; optional just saves an API call
+# 
+# ignore = 54321 ; ID of ToDo list to ignore
+# ignore = 43215
+# 
+
 1;
 
 __DATA__
