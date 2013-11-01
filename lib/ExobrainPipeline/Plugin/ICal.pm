@@ -54,3 +54,14 @@ sub execute {
 }
 
 1;
+
+__END__
+
+[ICal]
+title = Upcomming Hollidays
+url   = http://www.calendarlabs.com/templates/ical/US-Holidays.ics
+days  = 28
+
+[ICal]
+title = World Take Over Schedule
+url   = http://127.0.0.37/data/ics/world.ics
