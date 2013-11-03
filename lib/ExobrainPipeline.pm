@@ -24,6 +24,15 @@ sub plugin_named {
   return;
 }
 
+sub run {
+    my $self = shift;
+
+    my $data = [];
+    $data = $_->execute($data) for $self->plugins->flatten;
+
+    return $data;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
