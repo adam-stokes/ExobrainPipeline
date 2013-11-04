@@ -5,12 +5,14 @@ requires 'Class::Load';
 requires 'Moose';
 requires 'MooseX::Types::Perl';
 requires 'Config::MVP';
+requires 'Config::MVP::Reader::INI';
 requires 'MooseX::LazyRequire';
 requires 'MooseX::SetOnce';
 requires 'Moose::Util::TypeConstraints';
 requires 'Moose::Autobox';
 requires 'Params::Util';
 requires 'MooseX::Types';
+
 
 # Plugin::AgendaEmail
 suggests 'Email::Sender::Simple';
