@@ -3,7 +3,7 @@ use Moose;
 with 'ExobrainPipeline::Role::Plugin';
 
 use 5.010;
-
+use Moose::Autobox;
 use namespace::autoclean;
 
 has cmd         => ( is => 'ro', isa => 'Str', required => 1 );
