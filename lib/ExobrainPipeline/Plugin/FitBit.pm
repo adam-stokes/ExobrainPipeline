@@ -27,7 +27,7 @@ sub execute {
 
     if ( $steps >= $self->step_goal ) {
         push @$data, {
-            tdp => [ $self->tdp_id, "$steps steps" ],
+            tdp    => { id => $self->tdp_id, note => "$steps steps" },
             agenda => "You met your step goal with $steps steps\n",
         };
 
