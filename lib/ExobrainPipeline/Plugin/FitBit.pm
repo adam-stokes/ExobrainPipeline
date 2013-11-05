@@ -9,10 +9,10 @@ use DateTime;
 
 use namespace::autoclean;
 
-has step_goal => ( is => 'ro', isa => 'Int', default  => 10000 );
-has tdp_id    => ( is => 'ro', isa => 'Int', required => 1 );
-has today     => ( is => 'ro', isa => 'Bool', default => 0 );
-has time_zone => ( is => 'ro', isa => 'Str', required => 0 );
+has step_goal => ( is => 'ro', isa => 'Int',  default  => 10000 );
+has tdp_id    => ( is => 'ro', isa => 'Int',  required => 1 );
+has today     => ( is => 'ro', isa => 'Bool', default  => 0 );
+has time_zone => ( is => 'ro', isa => 'Str',  required => 0 );
 
 has _api => (
     is      => 'ro',
@@ -28,17 +28,28 @@ sub execute {
     my $steps = $self->_api->steps_taken( $self->today ? () : $yesterday );
 
     if ( $steps >= $self->step_goal ) {
-        push @$data, {
+        my $message = "You met your step goal with $steps steps\n";
+        push @$data,
+            {
             tdp    => { id => $self->tdp_id, note => "$steps steps" },
-            agenda => "You met your step goal with $steps steps\n",
-        };
+            agenda => {
+                text => $message,
+                html => "<h2>FitBit</h2>\n<p>$message</p>"
+            },
+            };
 
     }
     else {
         my $deficit = $self->step_goal - $steps;
-        push @$data,
-            { agenda =>
-                "You were $deficit under your step goal with $steps steps." };
+        my $message
+            = "You were $deficit under your step goal with $steps steps.\n";
+        push @$data, {
+            agenda => {
+                text => $message,
+                html => "<h1>FitBit</h1>\n<p>$message</p>"
+                }
+
+        };
     }
 
     return $data;
