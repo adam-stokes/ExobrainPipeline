@@ -3,6 +3,7 @@ package ExobrainPipeline::Builder;
 use strict;
 use warnings;
 
+use Try::Tiny;
 use Path::Class;
 use Class::Load;
 
@@ -49,8 +50,22 @@ sub _load_config {
     #     if $arg->{_global_stashes};
     # }
 
-    my $seq = Config::MVP::Reader::Finder->read_config( $root->file('.exobrain'),
-    { assembler => $assembler } );
+    my $seq;
+    try {
+        $seq = Config::MVP::Reader::Finder->read_config(
+            $root->file('.exobrain'),
+            { assembler => $assembler },
+        );
+    }
+    catch {
+        die $_ unless try {
+            $_->isa('Config::MVP::Error')
+                and $_->ident eq 'package not installed';
+        };
+        my $package = $_->package;
+        die "Required plugin $package isn't installed.\n";
+
+    };
 
   return $seq;
 }
