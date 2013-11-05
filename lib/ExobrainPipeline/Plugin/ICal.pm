@@ -30,6 +30,7 @@ sub execute {
     );
 
     my $output = $self->title . "\n" . '=' x length( $self->title ) . "\n";
+    my $raw_data = [];
 
     my @events = sort {
         $a->{properties}{dtstart}[0]{value}
@@ -42,13 +43,18 @@ sub execute {
         my $start = DateTime::Format::ICal->parse_datetime(
             $event->property('dtstart')->[0]->value );
 
+        $raw_data->push(
+            {   start => $start,
+                name  => $event->property('summary')->[0]->value
+            } );
+
         $output .= join( ' - ',
             $start->strftime( $self->time_format ),
             $event->property('summary')->[0]->value )
             . "\n";
     }
 
-    $data->push( { agenda => $output } );
+    $data->push( { agenda => $output, ical => $raw_data } );
 
     return $data;
 }
