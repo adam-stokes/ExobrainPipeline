@@ -44,12 +44,12 @@ sub execute {
             $event->property('dtstart')->[0]->value );
 
         $raw_data->push(
-            {   start => $start,
+            {   start => $event->start,
                 name  => $event->property('summary')->[0]->value
             } );
 
         $output .= join( ' - ',
-            $start->strftime( $self->time_format ),
+            $event->start->strftime( $self->time_format ),
             $event->property('summary')->[0]->value )
             . "\n";
     }
