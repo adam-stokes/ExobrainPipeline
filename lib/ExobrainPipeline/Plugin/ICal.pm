@@ -17,6 +17,7 @@ has url         => ( is => 'ro', isa => 'Str', required => 1 );
 has days        => ( is => 'ro', isa => 'Int', default  => 7 );
 has title       => ( is => 'ro', isa => 'Str', default  => 'Upcomming Events' );
 has time_format => ( is => 'ro', isa => 'Str', default  => '%m-%d %a %R' );
+has time_zone   => ( is => 'ro', isa => 'Str', required => 0 );
 
 sub execute {
     my ( $self, $data ) = @_;
@@ -39,9 +40,7 @@ sub execute {
         Data::ICal->new( data => $ics )->events($span);
 
     for my $event (@events) {
-
-        my $start = DateTime::Format::ICal->parse_datetime(
-            $event->property('dtstart')->[0]->value );
+        $event->start->set_time_zone( $self->time_zone ) if $self->time_zone;
 
         $raw_data->push(
             {   start => $event->start,
