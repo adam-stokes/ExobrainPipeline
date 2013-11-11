@@ -1,0 +1,32 @@
+# ABSTRACT: getting started with ExobrainPipeline
+# PODNAME: ExobrainPipeline::Tutorial
+
+__END__
+
+=pod
+
+=head1 NAME
+
+ExobrainPipeline::Tutorial - getting started with ExobrainPipeline
+
+=head1 VERSION
+
+version 0.01
+
+=head1 DESCRIPTION
+
+ExobrainPipeline is an application implementing a data pipeline and plugins
+to let Perl automate your life.  Plugins can aggregate iCal feeds,
+quantified-self data, etc that get passed on to other plugins generating daily
+emails, complete goals on https://tdp.me , etc.
+
+Design of L<ExobrainPipeline> is largely based on L<Dist::Zilla> and ideas from
+Ricardo Signes & Paul Fenwick.
+
+The main interaction with L<ExobrainPipeline> is via the L<exopipe> command and
+a ~/.exobrain.ini config file.
+
+-- TO BE CONTINUED --
+
+# TODO: the continuing
+
