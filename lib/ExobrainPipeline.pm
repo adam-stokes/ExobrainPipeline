@@ -42,32 +42,22 @@ __END__
 
 =head1 NAME
 
-ExobrainPipeline - Blah blah blah
-
-=head1 SYNOPSIS
-
-  use ExobrainPipeline;
+ExobrainPipeline - plugin based application for letting Perl think for you
 
 =head1 DESCRIPTION
 
-ExobrainPipeline is
+ExobrainPipeline is an application implementing a data pipeline and plugins
+to let Perl automate your life.  Plugins can aggregate iCal feeds,
+quantified-self data, etc that get passed on to other plugins generating daily
+emails, complete goals on https://tdp.me , etc.
 
-=attr plugins
+Design of L<ExobrainPipeline> is largely based on L<Dist::Zilla> and ideas from
+Ricardo Signes & Paul Fenwick.
 
-This is an arrayref of plugins that have been plugged into this ExobrainPipeline
-object.
-
-Non-core code B<must not> alter this arrayref.  Public access to this attribute
-B<may go away> in the future.
-
-=cut
-
-=head1 AUTHORS
+=head1 AUTHOR
 
 Mike Greb E<lt>michael@thegrebs.comE<gt>
-Ricardo Signes E<lt>rjbs@cpan.orgE<gt>
 
-rjbs wrote L<Dist::Zilla> which I stole^wborrowed lots of code/design from
 =head1 COPYRIGHT
 
 Copyright 2013- Mike Greb
@@ -78,5 +68,10 @@ This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
+
+https://www.facebook.com/paul.fenwick/posts/10151680344699611
+
+https://github.com/rjbs/Ywar
+
 
 =cut
