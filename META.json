@@ -1,5 +1,5 @@
 {
-   "abstract" : "Blah blah blah",
+   "abstract" : "plugin based application for letting Perl think for you",
    "author" : [
       "Mike Greb <michael@thegrebs.com>"
    ],
@@ -36,7 +36,35 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "App::Cmd" : "0.309",
+            "Class::Load" : "0",
+            "Config::MVP" : "0",
+            "Config::MVP::Reader::INI" : "0",
+            "Moose" : "0",
+            "Moose::Autobox" : "0",
+            "Moose::Util::TypeConstraints" : "0",
+            "MooseX::LazyRequire" : "0",
+            "MooseX::SetOnce" : "0",
+            "MooseX::Types" : "0",
+            "MooseX::Types::Perl" : "0",
+            "Params::Util" : "0",
+            "Path::Class" : "0",
+            "perl" : "5.010"
+         },
+         "suggests" : {
+            "Data::ICal::DateTime" : "0",
+            "DateTime" : "0",
+            "DateTime::Format::ICal" : "0",
+            "DateTime::Format::ISO8601" : "0",
+            "DateTime::Span" : "0",
+            "Email::MIME::CreateHTML" : "0",
+            "Email::Sender::Simple" : "0",
+            "HTTP::Tiny" : "0",
+            "Moose::Autobox" : "0",
+            "Template" : "0",
+            "Time::Duration" : "0",
+            "WebService::BasecampX" : "0",
+            "WebService::FitBit" : "0"
          }
       },
       "test" : {
@@ -46,6 +74,20 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/mikegrb/ExobrainPipeline/issues"
+      },
+      "homepage" : "https://github.com/mikegrb/ExobrainPipeline",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/mikegrb/ExobrainPipeline.git",
+         "web" : "https://github.com/mikegrb/ExobrainPipeline"
+      }
+   },
+   "version" : "0.01",
+   "x_contributors" : [
+      "mikegrb <mgreb@linode.com>"
+   ]
 }
 
