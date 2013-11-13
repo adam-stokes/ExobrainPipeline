@@ -37,8 +37,7 @@ sub execute {
         $plugin->{tdp} = [ $plugin->{tdp} ] if ref $plugin->{tdp} eq 'HASH';
 
         for my $goal ( $plugin->{tdp}->flatten ) {
-            my $return
-                = $self->_api->completed( $goal->flatten, date => $date );
+            $self->_api->completed( $goal->flatten, date => $date );
         }
     }
 
@@ -57,7 +56,8 @@ sub execute {
         . '=' x length( $self->title ) . "\n"
         . $output . "\n";
 
-    my $html = "<h1>" . $self->title . "</h1>\n<pre>$output</pre>\n";
+    $output =~ s/\n/<br>\n/g;
+    my $html = "<h1>" . $self->title . "</h1>\n$output\n";
     $data->push( { agenda => { text => $txt, html => $html } } );
 
     return $data;
