@@ -27,14 +27,14 @@ sub execute {
     $day = $day->strftime('%Y/%m/%d');
     my $contributions = $contrib_data{$day} || 'Unknown';
 
-    my $message = "$contributions contributions to GitHub on $day.";
+    my $message = "$contributions contributions on GitHub for $day.";
 
     my $output = {
         agenda => {
             text => $self->title . "\n"
                 . '=' x length( $self->title ) . "\n"
                 . $message . "\n",
-            html => "<h1>" . $self->title . "</h1>\n<pre>$message</pre>\n"
+            html => "<h1>" . $self->title . "</h1>\n<p>$message</p>\n"
         } };
 
     if ( $contributions && $contributions ne 'Unknown' && $self->tdp_id ) {
