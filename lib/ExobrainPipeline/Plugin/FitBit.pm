@@ -34,7 +34,7 @@ sub execute {
             tdp    => { id => $self->tdp_id, note => "$steps steps" },
             agenda => {
                 text => $message,
-                html => "<h2>FitBit</h2>\n<p>$message</p>"
+                html => "<h1>FitBit</h1>\n<p>$message</p>"
             },
             };
 
