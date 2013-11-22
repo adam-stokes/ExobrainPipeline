@@ -9,7 +9,7 @@ to let Perl automate your life.  Plugins can aggregate iCal feeds,
 quantified-self data, etc that get passed on to other plugins generating daily
 emails, complete goals on https://tdp.me , etc.
 
-Design of [ExobrainPipeline](http://search.cpan.org/perldoc?ExobrainPipeline) is largely based on [Dist::Zilla](http://search.cpan.org/perldoc?Dist::Zilla) and ideas from
+Design of [ExobrainPipeline](https://metacpan.org/pod/ExobrainPipeline) is largely based on [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) and ideas from
 Ricardo Signes & Paul Fenwick.
 
 # AUTHOR

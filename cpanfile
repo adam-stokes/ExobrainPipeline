@@ -12,6 +12,7 @@ requires 'Moose::Util::TypeConstraints';
 requires 'Moose::Autobox';
 requires 'Params::Util';
 requires 'MooseX::Types';
+requires 'Try::Tiny';
 
 
 # Plugin::AgendaEmail
@@ -36,6 +37,8 @@ suggests 'DateTime::Span';
 suggests 'Data::ICal::DateTime';
 suggests 'DateTime::Format::ICal';
 
+# Plugin::GitHubContribs
+suggests 'Net::GitHub', '0.54';
 
 on test => sub {
     requires 'Test::More', '0.88';
