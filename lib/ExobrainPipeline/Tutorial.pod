@@ -24,7 +24,77 @@ Design of L<ExobrainPipeline> is largely based on L<Dist::Zilla> and ideas from
 Ricardo Signes & Paul Fenwick.
 
 The main interaction with L<ExobrainPipeline> is via the L<exopipe> command and
-a ~/.exobrain.ini config file.
+an ~/.exobrain.ini config file.
+
+=head1 PLUGINS
+
+Plugins are executed in the order specified in the configuration file and
+initialized by passing config file values as named parameters to their
+constructor.
+
+Plugin package names are created by prepending C<ExobrainPipeline::Plugin::>.
+Plugins consume the C<ExobrainPipeline::Role::Plugin> role and implement an
+C<execute> method. The C<execute> method is passed an array ref with one entry
+per plugin already executed and it should add it's element and return it.
+
+The array element for each plugin is a hashref.  The names of keys and their
+meaning and values are up to the plugins to determine.  For example,
+L<ExobrainPipeline::Plugin::AgendaEmail>, scans through all the plugins that
+have run looking for those that have an C<agenda> key in their hash and
+generates a daily agenda email based on them.
+
+=head1 CONFIGURATION
+
+Example config file
+
+ [FitBit]
+ step_goal = 10000
+ tdp_id    = 50121
+ time_zone = America/New_York
+ 
+ [GitHubContribs]
+ username  = mikegrb
+ tdp_id    = 50543
+ time_zone = America/New_York
+ 
+ [ICal]
+ url = http://some/private/calendar.ics
+ 
+ [ICal / ICal2 ]
+ title = Upcoming Holidays
+ url   = http://www.calendarlabs.com/templates/ical/US-Holidays.ics
+ days  = 30
+ 
+ [ICal / ICal3 ]
+ title = Galloway Now
+ url   = http://www.google.com/calendar/ical/ivgf5vo85m6t7daacoj4ei32e8%40group.calendar.google.com/public/basic.ics
+ 
+ [ICal::Combiner]
+ strip_midnight = 1 ; All day events show up as midnight - midnight
+ 
+ [Taskwarrior]
+ cmd = /usr/local/bin/task unblocked
+ 
+ [Basecamp]
+ username   = good_sir@example.com
+ password   = delicious_kosher_bacon
+ account_id = 42
+ 
+ ; person id for who's tasks to list, optional but saves an API call
+ person     = 4267654
+ 
+ ; ids of task lists to ignore tasks from
+ ignore = 1234567
+ ignore = 7654321
+ 
+ [TheDailyPractice]
+ api_key = bacon
+ time_zone = America/New_York
+ 
+ [AgendaEmail]
+ to   = michael@thegrebs.com
+ from = michael@thegrebs.com
+
 
 -- TO BE CONTINUED --
 
